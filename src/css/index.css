@@ -36,7 +36,7 @@
   }
   .login {
     @apply flex flex-col justify-center shadow-xl rounded-md items-center p-4;
-    backdrop-filter: blur(40px);
+    backdrop-filter: blur(20px);
     background-color: rgba(255, 255, 255, 0.13);
   }
   .LoginLogo {
