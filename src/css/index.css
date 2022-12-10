@@ -13,12 +13,12 @@
 /* /////////////// */
 @layer base {
   * {
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
+    user-select: none; /* Non-prefixed version, currently*/
     -moz-user-select: none; /* Old versions of Firefox */
     -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none; /* Non-prefixed version, currently*/
+    -khtml-user-select: none; /* Konqueror HTML */
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
     scrollbar-width: none;
     font-family: "BYekan";
   }
@@ -27,3 +27,25 @@
   }
 }
 /* /////////////// */
+@layer components {
+  .ParentLogin {
+    @apply w-full flex justify-center items-center;
+    background-image: url(../assets/image/bg-login.jpg);
+    background-size: cover;
+    height: 100vh;
+  }
+  .login {
+    @apply flex flex-col justify-center shadow-xl rounded-md items-center p-4;
+    backdrop-filter: blur(40px);
+    background-color: rgba(255, 255, 255, 0.13);
+  }
+  .LoginLogo {
+    width: 100px;
+    height: 100px;
+  }
+  .LoginInput {
+    @apply outline-none mt-5 bg-transparent shadow-lg text-center border-blue-100 text-white border-2 rounded-3xl;
+    width: 250px;
+    height: 50px;
+  }
+}
