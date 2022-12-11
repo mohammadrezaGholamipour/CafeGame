@@ -44,7 +44,7 @@
     height: 100px;
   }
   .LoginInput {
-    @apply outline-none mt-5 bg-[#2726299c]  shadow-2xl text-center border-[#1716187c] text-white border rounded-md;
+    @apply outline-none mt-5 bg-[#2726299c]  shadow-2xl text-center border-[#1716187c] text-white  rounded-lg;
     width: 250px;
     height: 50px;
   }
