@@ -19,7 +19,7 @@ const state = reactive({
         class="LoginInput"
         :type="items.type"
       />
-     
+     <button class="loginBtn">وارد شدن</button>
     </div>
   </div>
 </template>

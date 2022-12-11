@@ -48,8 +48,9 @@
     width: 250px;
     height: 50px;
   }
-  .lgoinBtn {
-    @apply flex justify-center items-center p-3 mt-4 bg-[#70318a] hover:bg-red-700 transition-all rounded-md text-white;
+  .loginBtn {
+    @apply flex justify-center  hover:opacity-100 items-center p-3 mt-4 bg-red-700 opacity-90 duration-500 transition-all rounded-md text-white;
+    width: 100px;
   }
   @media only screen and (max-width: 600px) {
     .ParentLogin {
@@ -58,8 +59,8 @@
       background-size: cover;
       overflow: hidden;
     }
-    .login{
-      @apply bg-transparent
+    .login {
+      @apply bg-transparent;
     }
   }
 }
