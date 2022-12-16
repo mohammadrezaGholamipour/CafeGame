@@ -1,6 +1,8 @@
 <script setup>
+import { useToast } from "vue-toastification";
 import { reactive } from "vue";
 ////////////////////////////
+const toast = useToast();
 const state = reactive({
   loginInput: [
     {
@@ -49,6 +51,9 @@ const handleValidateInput = (name) => {
     input[0].message = "";
   }
   //////////////////////////////////////
+};
+const handleLogin = () => {
+  toast.success("sdfsfdds");
 };
 </script>
 <template>
