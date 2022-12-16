@@ -22,8 +22,6 @@ const state = reactive({
   ],
 });
 //////////////////////////////////////
-const handelClassInput = (name) => {};
-//////////////////////////////////////
 const handleValidateInput = (name) => {
   const input = state.loginInput.filter((items) => items.name === name);
   if (input[0].value.length > 0) {
@@ -60,20 +58,20 @@ const handleValidateInput = (name) => {
       <template v-for="items in state.loginInput">
         <input
           @blur="handleValidateInput(items.name)"
-          class="LoginInput"
           :placeholder="items.placeholder"
           v-model="items.value"
+          class="LoginInput"
           :type="items.type"
           maxlength="10"
         />
-        <transition-scale>
+        <transition-expand>
           <p
-            class="mt-2 bg-red-700 px-7 p-2 rounded-xl text-white"
+            class="mt-2 bg-red-700 px-7 p-2 rounded-lg text-white"
             v-if="items.message"
           >
             {{ items.message }}
           </p>
-        </transition-scale>
+        </transition-expand>
       </template>
       <button @click="handleLogin" class="loginBtn">وارد شدن</button>
     </div>
