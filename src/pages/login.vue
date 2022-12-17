@@ -31,6 +31,7 @@ const handleValidateInput = (name) => {
       if (isNaN(input[0].value)) {
         if (input[0].value.length > 5) {
           input[0].validate = true;
+          input[0].message = "";
         } else {
           input[0].validate = false;
           input[0].message = "باید بیشتر از 5 رقم باشد";
@@ -42,6 +43,7 @@ const handleValidateInput = (name) => {
     } else {
       if (input[0].value.length > 5) {
         input[0].validate = true;
+        input[0].message = "";
       } else {
         input[0].validate = false;
         input[0].message = "باید بیشتر از 5 رقم باشد";
@@ -50,10 +52,20 @@ const handleValidateInput = (name) => {
   } else {
     input[0].message = "";
   }
-  //////////////////////////////////////
 };
+///////////////////////////
 const handleLogin = () => {
-  toast.success("sdfsfdds");
+  const inputValue = state.loginInput.every((items) => items.value);
+  if (inputValue) {
+    const validate = state.loginInput.every((items) => items.validate);
+    if (validate) {
+      toast.success("لاگین");
+    } else {
+      toast.error("اطلاعات صحیح نمیباشد");
+    }
+  } else {
+    toast.error("لطفا اطلاعات خود را وارد کنید");
+  }
 };
 </script>
 <template>
@@ -62,16 +74,16 @@ const handleLogin = () => {
       <img class="LoginLogo" src="../assets/image/logo.png" alt="لوگو" />
       <template v-for="items in state.loginInput">
         <input
-          @blur="handleValidateInput(items.name)"
+          @blur.trim="handleValidateInput(items.name)"
           :placeholder="items.placeholder"
           v-model="items.value"
           class="LoginInput"
           :type="items.type"
-          maxlength="10"
+          maxlength="15"
         />
         <transition-expand>
           <p
-            class="mt-2 bg-red-700 px-7 p-2 rounded-lg text-white"
+            class="mt-2 bg-red-700 opacity-80 border-red-800 border-2 px-7 p-2 rounded-md text-white"
             v-if="items.message"
           >
             {{ items.message }}

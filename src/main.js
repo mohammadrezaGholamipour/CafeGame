@@ -6,12 +6,24 @@ import { createApp } from 'vue'
 import router from './router'
 import App from './App.vue'
 import './css/index.css'
-
 //////////////////////
 const app = createApp(App)
-///////////////
+/////////////////////////
 app.use(VueTransitions)
 app.use(router)
-app.use(Toast)
+app.use(Toast, {
+  showCloseButtonOnHover: false,
+  hideProgressBar: false,
+  position: "top-center",
+  pauseOnFocusLoss: true,
+  closeButton: "button",
+  draggablePercent: 0.6,
+  closeOnClick: false,
+  pauseOnHover: true,
+  draggable: true,
+  timeout: 5000,
+  icon: true,
+  rtl: true
+})
 ///////////////
 app.mount('#app')
