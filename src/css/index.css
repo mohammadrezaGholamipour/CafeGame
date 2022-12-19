@@ -39,7 +39,7 @@
     backdrop-filter: blur(20px);
     background-color: rgba(255, 255, 255, 0.13);
   }
-  .LoginLogo {
+  .Logo {
     width: 100px;
     height: 100px;
   }
@@ -52,7 +52,31 @@
     @apply flex justify-center  hover:opacity-100 items-center p-3 mt-4 bg-blue-700 border-2 opacity-70 duration-500 transition-all rounded-md text-white;
     width: 100px;
   }
-  @media only screen and (max-width: 600px) {
+  /* //////////////////////////// */
+  .ParentRegister {
+    @apply w-full flex justify-start items-center;
+    padding-right: 15vw;
+    background-image: url(../assets/image/BgRegister.jpg);
+    background-size: cover;
+    height: 100vh;
+  }
+  .Register {
+    @apply flex flex-col justify-center  rounded-md items-center p-4;
+    width: 550px;
+  }
+  .ParentInputRegister {
+    @apply flex w-full flex-wrap justify-evenly items-center;
+  }
+  .RegisterInput {
+    @apply outline-none mt-5 bg-white shadow-2xl text-center text-black rounded-sm;
+    width: 250px;
+    height: 50px;
+  }
+  .RegisterBtn {
+    @apply flex justify-center  hover:opacity-70 items-center p-3 mt-4 bg-red-700  duration-500 transition-all rounded-md text-white;
+    width: 100px;
+  }
+  @media only screen and (max-width: 750px) {
     .ParentLogin {
       @apply w-full flex justify-center items-start pt-4;
       background-image: url(../assets/image/BgLoginMobile.jpg);
@@ -61,6 +85,15 @@
     }
     .login {
       @apply bg-transparent;
+    }
+    .ParentRegister {
+      @apply w-full p-0 flex justify-center  items-center;
+      background-image: url(../assets/image/BgRegisterMobile.jpg);
+      background-size: cover;
+      height: 100vh;
+    }
+    .ParentInputRegister {
+      @apply flex-col;
     }
   }
 }
