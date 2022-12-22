@@ -1,4 +1,5 @@
 <script setup>
+import { Field, Form, ErrorMessage } from "vee-validate";
 import { useToast } from "vue-toastification";
 import { reactive } from "vue";
 ////////////////////////////
@@ -55,13 +56,19 @@ const state = reactive({
     },
   ],
 });
+const isRequired = (value) => {
+  if (value && value.trim()) {
+    return true;
+  }
+  return "This is required";
+};
 </script>
 <template>
   <div class="ParentRegister">
     <div class="Register">
       <img class="Logo" src="../assets/image/logo.png" alt="لوگو" />
       <div class="ParentInputRegister">
-        <template v-for="items in state.registerInput">
+        <!-- <template v-for="items in state.registerInput">
           <input
             :placeholder="items.placeholder"
             class="RegisterInput"
@@ -77,7 +84,11 @@ const state = reactive({
               {{ items.message }}
             </p>
           </transition-expand>
-        </template>
+        </template> -->
+        <Form>
+          <Field name="field" :rules="isRequired" />
+          <ErrorMessage name="field" />
+        </Form>
         <button class="RegisterBtn">ثبت نام</button>
       </div>
     </div>
