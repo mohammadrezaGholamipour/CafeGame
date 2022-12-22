@@ -2,6 +2,7 @@
 import { Field, Form, ErrorMessage } from "vee-validate";
 import { useToast } from "vue-toastification";
 import { reactive } from "vue";
+import * as yup from "yup";
 ////////////////////////////
 const toast = useToast();
 const state = reactive({
