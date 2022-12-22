@@ -56,13 +56,13 @@ const state = reactive({
       value: "",
     },
   ],
+  schema: yup.object({
+    email: yup.string().required("ایمیل").email(),
+    name: yup.string().required("نام"),
+    password: yup.string().required("پسورد").min(8),
+  }),
 });
-const isRequired = (value) => {
-  if (value && value.trim()) {
-    return true;
-  }
-  return "This is required";
-};
+const passwordRules = yup.string().required("کمه").min(8);
 </script>
 <template>
   <div class="ParentRegister">
@@ -86,11 +86,18 @@ const isRequired = (value) => {
             </p>
           </transition-expand>
         </template> -->
-        <Form>
-          <Field name="field" :rules="isRequired" />
-          <ErrorMessage name="field" />
+        <Form class="flex flex-col" :validation-schema="state.schema">
+          <Field  class="RegisterInput" name="name" type="text" />
+          <ErrorMessage name="name" />
+          <!-- ////////////////////// -->
+          <Field name="password" type="password" />
+          <ErrorMessage name="password" />
+          <!-- ///////////////////// -->
+          <Field name="email" />
+          <ErrorMessage name="email" />
+          <!-- //////////////////////// -->
+          <button class="RegisterBtn">ثبت نام</button>
         </Form>
-        <button class="RegisterBtn">ثبت نام</button>
       </div>
     </div>
   </div>
