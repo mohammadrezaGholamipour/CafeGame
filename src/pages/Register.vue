@@ -9,60 +9,67 @@ const state = reactive({
   registerInput: [
     {
       placeholder: "نام",
-      validate: false,
-      name: "Name",
+      name: "name",
       type: "text",
-      message: "",
       value: "",
     },
     {
       placeholder: "نام خانوادگی",
-      name: "LastName",
-      validate: false,
+      name: "lastName",
       type: "text",
-      message: "",
       value: "",
     },
     {
       placeholder: "نام کاربری",
-      name: "UserName",
-      validate: false,
+      name: "userName",
       type: "text",
-      message: "",
       value: "",
     },
     {
       placeholder: "شماره تلفن همراه",
-      validate: false,
-      name: "Mobile",
+      name: "mobile",
       type: "text",
-      message: "",
       value: "",
     },
     {
       placeholder: "رمز عبور",
-      name: "PassWord",
-      validate: false,
+      name: "password",
       type: "password",
-      message: "",
       value: "",
     },
     {
       placeholder: "تکرار رمز عبور",
-      name: "PassWord",
-      validate: false,
+      name: "repeatPassword",
       type: "password",
-      message: "",
       value: "",
     },
   ],
   schema: yup.object({
-    email: yup.string().required("ایمیل").email(),
-    name: yup.string().required("نام"),
-    password: yup.string().required("پسورد").min(8),
+    name: yup.string().required("نام خود را وارد کنید").min(3, "صحیح نمیباشد"),
+    lastName: yup
+      .string()
+      .required("نام خانوادگی خود را وارد کنید")
+      .min(3, "صحیح نمیباشد"),
+    password: yup.string().email("ایمیل صحیح نمیباشد"),
+    userName: yup
+      .string()
+      .required("نام کاربری خود را وارد کنید")
+      .min(8, "حداقل 8 کاراکتر"),
+    mobile: yup
+      .string()
+      .required("تلفن همراه خود را وارد کنید")
+      .min(11, "شماره تلفن صحیح نمیباشد")
+      .max(11, "شماره تلفن صحیح نمیباشد"),
+    password: yup
+      .string()
+      .required("رمز خود را وارد کنید")
+      .min(4, "حداقل چهار کاراکتر باید باشد"),
+    repeatPassword: yup
+      .string()
+      .required("رمز خود را تکرار کنید")
+      .min(4, "حداقل چهار کاراکتر باید باشد"),
   }),
 });
-const passwordRules = yup.string().required("کمه").min(8);
 </script>
 <template>
   <div class="ParentRegister">
@@ -87,14 +94,16 @@ const passwordRules = yup.string().required("کمه").min(8);
           </transition-expand>
         </template> -->
         <Form class="flex flex-col" :validation-schema="state.schema">
-          <Field  class="RegisterInput" name="name" type="text" />
-          <ErrorMessage name="name" />
-          <!-- ////////////////////// -->
-          <Field name="password" type="password" />
-          <ErrorMessage name="password" />
-          <!-- ///////////////////// -->
-          <Field name="email" />
-          <ErrorMessage name="email" />
+          <template v-for="items in state.registerInput" :key="items.name">
+            <Field
+              :placeholder="items.placeholder"
+              :validateOnBlur="false"
+              class="RegisterInput"
+              :name="items.name"
+              :type="items.type"
+            />
+            <ErrorMessage class="ErrorMessage" :name="items.name" />
+          </template>
           <!-- //////////////////////// -->
           <button class="RegisterBtn">ثبت نام</button>
         </Form>

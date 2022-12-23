@@ -19,8 +19,11 @@
     -khtml-user-select: none; /* Konqueror HTML */
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
-    scrollbar-width: none;
+    scrollbar-width: none !important;
     font-family: "BYekan";
+  }
+  ::-webkit-scrollbar {
+    width: 0px !important;
   }
   html {
     direction: rtl !important;
@@ -49,15 +52,15 @@
     height: 50px;
   }
   .loginBtn {
-    @apply flex justify-center  hover:opacity-100 items-center p-3 mt-4 bg-blue-700 border-2 opacity-70 duration-500 transition-all rounded-md text-white;
+    @apply flex justify-center  hover:opacity-70 items-center p-3 mt-4 bg-blue-700  opacity-100 duration-500 transition-all rounded-md text-white;
     width: 100px;
   }
   /* //////////////////////////// */
   .ParentRegister {
-    @apply w-full flex justify-start items-center;
-    padding-right: 15vw;
+    @apply w-full flex overflow-y-scroll justify-start items-start;
     background-image: url(../assets/image/BgRegister.jpg);
     background-size: cover;
+    padding-right: 15vw;
     height: 100vh;
   }
   .Register {
@@ -71,6 +74,9 @@
     @apply outline-none mt-5 bg-white shadow-2xl text-center text-black rounded-sm;
     width: 250px;
     height: 50px;
+  }
+  .ErrorMessage {
+    @apply flex justify-center items-center text-center bg-white p-2 mt-1;
   }
   .RegisterBtn {
     @apply flex justify-center  hover:opacity-70 items-center p-3 mt-4 bg-red-700  duration-500 transition-all rounded-md text-white;
@@ -87,7 +93,7 @@
       @apply bg-transparent;
     }
     .ParentRegister {
-      @apply w-full p-0 flex justify-center  items-center;
+      @apply w-full p-0 flex justify-center  items-start;
       background-image: url(../assets/image/BgRegisterMobile.jpg);
       background-size: cover;
       height: 100vh;
