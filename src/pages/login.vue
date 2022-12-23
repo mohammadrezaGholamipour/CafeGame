@@ -72,24 +72,21 @@ const handleLogin = () => {
   <div class="ParentLogin">
     <div class="login">
       <img class="Logo" src="../assets/image/logo.png" alt="لوگو" />
-        <template v-for="items in state.loginInput">
-          <input
-            @blur.trim="handleValidateInput(items.name)"
-            :placeholder="items.placeholder"
-            v-model="items.value"
-            class="LoginInput"
-            :type="items.type"
-            maxlength="15"
-          />
-          <transition-expand>
-            <p
-              class="mt-2 bg-red-700 opacity-80 border-red-800 border-2 px-7 p-2 rounded-md text-white"
-              v-if="items.message"
-            >
-              {{ items.message }}
-            </p>
-          </transition-expand>
-        </template>
+      <template v-for="items in state.loginInput">
+        <input
+          @blur.trim="handleValidateInput(items.name)"
+          :placeholder="items.placeholder"
+          v-model="items.value"
+          class="LoginInput"
+          :type="items.type"
+          maxlength="15"
+        />
+        <transition-expand>
+          <p class="ErrorMessage" v-if="items.message">
+            {{ items.message }}
+          </p>
+        </transition-expand>
+      </template>
       <button @click="handleLogin" class="loginBtn">وارد شدن</button>
     </div>
   </div>

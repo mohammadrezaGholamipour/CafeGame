@@ -11,65 +11,68 @@ const state = reactive({
       placeholder: "نام",
       name: "name",
       type: "text",
+      rules: yup
+        .string()
+        .required("نام خود را وارد کنید")
+        .min(3, "کوتاه میباشد"),
       value: "",
     },
     {
       placeholder: "نام خانوادگی",
       name: "lastName",
       type: "text",
+      rules: yup
+        .string()
+        .required("نام خانوادگی خود را وارد کنید")
+        .min(3, "صحیح نمیباشد"),
       value: "",
     },
     {
       placeholder: "نام کاربری",
       name: "userName",
       type: "text",
+      rules: yup
+        .string()
+        .required("نام کاربری خود را وارد کنید")
+        .min(8, "حداقل 8 کاراکتر"),
       value: "",
     },
     {
       placeholder: "شماره تلفن همراه",
       name: "mobile",
       type: "text",
+      rules: yup
+        .string()
+        .required("تلفن همراه خود را وارد کنید")
+        .min(11, "شماره تلفن صحیح نمیباشد")
+        .max(11, "شماره تلفن صحیح نمیباشد"),
       value: "",
     },
     {
       placeholder: "رمز عبور",
       name: "password",
       type: "password",
+      rules: yup
+        .string()
+        .required("رمز خود را وارد کنید")
+        .min(4, "حداقل چهار کاراکتر باید باشد"),
       value: "",
     },
     {
       placeholder: "تکرار رمز عبور",
       name: "repeatPassword",
       type: "password",
+      rules: yup
+        .string()
+        .required("رمز خود را تکرار کنید")
+        .min(4, "حداقل چهار کاراکتر باید باشد"),
       value: "",
     },
   ],
-  schema: yup.object({
-    name: yup.string().required("نام خود را وارد کنید").min(3, "صحیح نمیباشد"),
-    lastName: yup
-      .string()
-      .required("نام خانوادگی خود را وارد کنید")
-      .min(3, "صحیح نمیباشد"),
-    password: yup.string().email("ایمیل صحیح نمیباشد"),
-    userName: yup
-      .string()
-      .required("نام کاربری خود را وارد کنید")
-      .min(8, "حداقل 8 کاراکتر"),
-    mobile: yup
-      .string()
-      .required("تلفن همراه خود را وارد کنید")
-      .min(11, "شماره تلفن صحیح نمیباشد")
-      .max(11, "شماره تلفن صحیح نمیباشد"),
-    password: yup
-      .string()
-      .required("رمز خود را وارد کنید")
-      .min(4, "حداقل چهار کاراکتر باید باشد"),
-    repeatPassword: yup
-      .string()
-      .required("رمز خود را تکرار کنید")
-      .min(4, "حداقل چهار کاراکتر باید باشد"),
-  }),
 });
+const handelRegisterFrom = () => {
+  console.log("fsdfsd");
+};
 </script>
 <template>
   <div class="ParentRegister">
@@ -93,19 +96,24 @@ const state = reactive({
             </p>
           </transition-expand>
         </template> -->
-        <Form class="flex flex-col" :validation-schema="state.schema">
+        <Form @submit.pervent="handelRegisterFrom" class="flex flex-col">
           <template v-for="items in state.registerInput" :key="items.name">
             <Field
               :placeholder="items.placeholder"
               :validateOnBlur="false"
               class="RegisterInput"
+              :rules="items.rules"
               :name="items.name"
               :type="items.type"
             />
-            <ErrorMessage class="ErrorMessage" :name="items.name" />
+            <transition-expand>
+              <ErrorMessage class="ErrorMessage" :name="items.name" />
+            </transition-expand>
           </template>
           <!-- //////////////////////// -->
-          <button class="RegisterBtn">ثبت نام</button>
+          <div class="w-full flex justify-center items-center">
+            <button class="RegisterBtn">ثبت نام</button>
+          </div>
         </Form>
       </div>
     </div>

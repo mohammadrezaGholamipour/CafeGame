@@ -64,11 +64,15 @@
     height: 100vh;
   }
   .Register {
-    @apply flex flex-col justify-center  rounded-md items-center p-4;
+    @apply flex flex-col justify-center rounded-md items-center p-4;
     width: 550px;
   }
   .ParentInputRegister {
     @apply flex w-full flex-wrap justify-evenly items-center;
+  }
+  .RegisterBtn {
+    @apply flex justify-center  hover:opacity-70 items-center p-3 mt-4 bg-blue-700  opacity-100 duration-500 transition-all rounded-md text-white;
+    width: 100px;
   }
   .RegisterInput {
     @apply outline-none mt-5 bg-white shadow-2xl text-center text-black rounded-sm;
@@ -76,11 +80,7 @@
     height: 50px;
   }
   .ErrorMessage {
-    @apply flex justify-center items-center text-center bg-white p-2 mt-1;
-  }
-  .RegisterBtn {
-    @apply flex justify-center  hover:opacity-70 items-center p-3 mt-4 bg-red-700  duration-500 transition-all rounded-md text-white;
-    width: 100px;
+    @apply mt-2 flex items-center justify-center bg-red-700 opacity-80 border-red-800 border-2 px-7 p-2 rounded-sm text-white;
   }
   @media only screen and (max-width: 750px) {
     .ParentLogin {
