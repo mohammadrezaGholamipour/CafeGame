@@ -102,4 +102,38 @@
       @apply flex-col;
     }
   }
+  .ParentHome {
+    @apply flex flex-col overflow-y-scroll justify-start items-center bg-[#f6f6f6];
+    height: 100vh;
+  }
+  .ParentHeader {
+    @apply flex justify-center items-center w-full  p-2;
+  }
+  .ParentMain {
+    @apply flex justify-between items-center flex-wrap w-full p-2;
+    height: calc(100vh - 132px);
+  }
+  .ConsolePs4 {
+    @apply flex relative flex-col justify-between mb-3 p-3 pt-8 items-center bg-white shadow-md rounded-md;
+    width: 300px;
+    height: 200px;
+  }
+  .NumberPs4 {
+    @apply p-2 text-xl shadow-xl text-white px-4 rounded-full bg-blue-500 absolute;
+    top: -20px;
+  }
+  .TimerPs4 {
+    @apply text-3xl;
+  }
+  .InputMoneyPs4 {
+    @apply rounded-md shadow-md text-black text-center border-black border-2;
+    width: 200px;
+    height: 30px;
+  }
+  .MoneyPs4 {
+    @apply text-3xl;
+  }
+  .BtnPs4 {
+    @apply p-2 px-5 rounded-md shadow-md text-white;
+  }
 }
